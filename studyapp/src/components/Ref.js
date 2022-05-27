@@ -7,7 +7,7 @@ const Ref = () => {
   // Ref 객체를 1개 생성하세요.
 
   // setTimeout 함수를 구현하세요.
-  setTimeout();
+//   setTimeout();
 
   //jsx 코드를 수정하세요.
   return (
