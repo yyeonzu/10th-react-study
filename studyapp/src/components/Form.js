@@ -5,24 +5,35 @@
 // form에 적용할 onSubmit 이벤트 함수를 구현하세요
 // input에 적용할 onChange 이벤트 함수를 구현하세요
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Form = () => {
   // useState로 state 2개 만들기
-
+  // input 내부의 state, print되는 곳의 state
+  const [text, setText] = useState('');
+  const [print, setPrint] = useState('');
   // onSubmit 함수 만들기
-
+  const onSubmit = (e) => {
+    e.preventDefault(); // 이벤트 발생했을 때 초기화 안되도록 한다
+    setPrint(text); // input의 text를 print의 text로 받아오기
+    setText(''); // text 부분 공백으로 초기화
+  };
   // onChange 함수 만들기
+  const onChange = (e) => {
+    setText(e.target.value); // text를 value의 값으로 변경
+  };
 
   // jsx 코드 수정
   return (
     <div>
-      <form>
-        <input />
-        <button>제출</button>
+      <form onSubmit={onSubmit}>
+        {' '}
+        {/*submit시 onSubmit 함수 실행*/}
+        <input onChange={onChange} value={text} />
+        <button type="submit">제출</button> {/*버튼 클릭시 submit 작동?*/}
       </form>
 
-      <p></p>
+      <p>{print}</p>
     </div>
   );
 };
